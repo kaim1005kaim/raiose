@@ -704,15 +704,14 @@ body.intro-active { overflow: hidden; }
         auto
         clamp(160px, 18%, 240px)
         minmax(260px, 32%)
-        clamp(220px, 24%, 320px)
-        minmax(260px, 30%);
-    gap: var(--spacing-3xl);
+        minmax(320px, 36%);
+    gap: var(--spacing-xl);
 }
 
 /* Home: ensure text has a sensible width and wraps */
 .home .hero-index { transform: none; justify-self: end; grid-column: 1; }
 .home .hero-visual { grid-column: 3; justify-self: center; }
-.home .hero-copy { max-width: clamp(28ch, 32vw, 42ch); align-self: center; justify-self: start; text-align: left; display: block; grid-column: 5; }
+.home .hero-copy { max-width: clamp(28ch, 32vw, 42ch); align-self: center; justify-self: start; text-align: left; display: block; grid-column: 4; margin-left: 40px; }
 .home .hero-title, .home .hero-subtitle { white-space: normal; }
 
 @media (max-width: 1280px) {
