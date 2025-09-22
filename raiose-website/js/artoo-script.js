@@ -1,4 +1,52 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Mobile menu functionality
+    const mobileToggle = document.querySelector('.mobile-toggle');
+    const mobileNav = document.createElement('nav');
+    mobileNav.className = 'mobile-nav';
+
+    // Check if we're in a subdirectory
+    const isInSubdir = window.location.pathname.includes('/pages/');
+    const pathPrefix = isInSubdir ? '../' : '';
+    const pagesPrefix = isInSubdir ? '' : 'pages/';
+
+    mobileNav.innerHTML = `
+        <button class="mobile-nav-close" aria-label="Close menu"></button>
+        <div class="mobile-nav-links">
+            <a href="${pathPrefix}index.html">ホーム</a>
+            <a href="${pathPrefix}about.html">私たちについて</a>
+            <a href="${pathPrefix}${pagesPrefix}company.html">会社情報</a>
+            <a href="${pathPrefix}${pagesPrefix}services.html">サービス</a>
+            <a href="${pathPrefix}${pagesPrefix}contact.html" class="mobile-cta">お問い合わせ</a>
+        </div>
+    `;
+    document.body.appendChild(mobileNav);
+
+    const closeBtn = mobileNav.querySelector('.mobile-nav-close');
+
+    // Toggle mobile menu
+    if (mobileToggle) {
+        mobileToggle.addEventListener('click', function() {
+            mobileNav.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    }
+
+    // Close mobile menu
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function() {
+            mobileNav.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    }
+
+    // Close menu when clicking outside
+    mobileNav.addEventListener('click', function(e) {
+        if (e.target === mobileNav) {
+            mobileNav.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+
     // Header scroll effects
     const header = document.querySelector('.header-nav');
     let lastScroll = 0;
