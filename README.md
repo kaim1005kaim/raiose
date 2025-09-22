@@ -8,8 +8,9 @@ Local preview
   - Then open: `http://localhost:8080/index.html`
 
 Deploy
-- Push to `main` and the GitHub Actions workflow (`.github/workflows/deploy.yml`) publishes `raiose-website/` to Pages.
-- In the repository settings, enable GitHub Pages with Source = GitHub Actions (default for public repos).
+- Push to `main` triggers automatic deployment to Vercel
+- The site is configured with Root Directory: `raiose-website`
+- Production URL updates automatically on each push to main branch
 
 Structure
 - `raiose-website/`: Static site (HTML/CSS/JS)
