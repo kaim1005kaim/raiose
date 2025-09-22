@@ -1,0 +1,7 @@
+{
+  "rootDirectory": "raiose-website",
+  "outputDirectory": ".",
+  "buildCommand": "",
+  "installCommand": "",
+  "framework": null
+}
