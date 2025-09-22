@@ -659,6 +659,23 @@
     transition: var(--transition);
     background: var(--bg-white);
     font-family: inherit;
+    color: var(--text-dark);
+}
+
+/* Style for select option placeholders */
+.form-group select option[value=""] {
+    color: #9ca3af;
+}
+
+/* Make select text gray when placeholder is selected */
+.form-group select:invalid,
+.form-group select:has(option[value=""]:checked) {
+    color: #9ca3af;
+}
+
+/* Make select text dark when actual option is selected */
+.form-group select:valid:not(:has(option[value=""]:checked)) {
+    color: var(--text-dark);
 }
 
 .form-group input:focus,

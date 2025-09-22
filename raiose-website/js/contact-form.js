@@ -2,6 +2,24 @@
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('contact-form');
 
+    // Handle select placeholder styling
+    const selects = document.querySelectorAll('.form-group select');
+    selects.forEach(select => {
+        // Set initial style
+        if (select.value === '') {
+            select.style.color = '#9ca3af';
+        }
+
+        // Update style on change
+        select.addEventListener('change', function() {
+            if (this.value === '') {
+                this.style.color = '#9ca3af';
+            } else {
+                this.style.color = '';
+            }
+        });
+    });
+
     if (form) {
         form.addEventListener('submit', async function(e) {
             e.preventDefault();
