@@ -11,6 +11,7 @@ Deploy
 - Push to `main` triggers automatic deployment to Vercel
 - The site is configured with Root Directory: `raiose-website`
 - Production URL updates automatically on each push to main branch
+- GitHub repository connected for continuous deployment
 
 Structure
 - `raiose-website/`: Static site (HTML/CSS/JS)
