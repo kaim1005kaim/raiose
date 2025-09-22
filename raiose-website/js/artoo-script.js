@@ -504,3 +504,153 @@ document.addEventListener('DOMContentLoaded', function() {
     
     console.log('Artoo Raiose Site Initialized');
 });
+
+// Intro overlay: show centered logo, then fade out and reveal
+document.addEventListener('DOMContentLoaded', function() {
+    const overlay = document.getElementById('intro-overlay');
+    if (!overlay) return;
+    document.body.classList.add('intro-active');
+    // Duration sync with CSS introPop (900ms) + hold time
+    const total = 1400;
+    setTimeout(() => {
+        overlay.classList.add('hidden');
+        // Allow interactions after fade
+        setTimeout(() => {
+            document.body.classList.remove('intro-active');
+            overlay.remove();
+        }, 650);
+    }, total);
+});
+
+// Tabs for Services page
+document.addEventListener('DOMContentLoaded', function() {
+    // Only run on services page
+    if (!document.querySelector('.svc-tabs')) return;
+
+    const tabs = document.querySelectorAll('.svc-tabs .tab');
+    const panels = document.querySelectorAll('.svc-panel');
+
+    if (!tabs.length || !panels.length) return;
+
+    // Function to activate tab
+    function activateTab(serviceName) {
+        // Remove all active states
+        tabs.forEach(t => {
+            t.classList.remove('active');
+            t.setAttribute('aria-selected', 'false');
+        });
+        panels.forEach(p => {
+            p.classList.remove('active');
+        });
+
+        // Add active state to selected tab and panel
+        tabs.forEach(t => {
+            if (t.dataset.service === serviceName) {
+                t.classList.add('active');
+                t.setAttribute('aria-selected', 'true');
+            }
+        });
+        panels.forEach(p => {
+            if (p.dataset.service === serviceName) {
+                p.classList.add('active');
+            }
+        });
+    }
+
+    // Add click handlers
+    tabs.forEach(tab => {
+        tab.addEventListener('click', function(e) {
+            e.preventDefault();
+            const svc = this.dataset.service;
+            activateTab(svc);
+            // Update URL hash without scrolling
+            if (history.replaceState) {
+                history.replaceState(null, null, '#' + svc);
+            } else {
+                window.location.hash = svc;
+            }
+        });
+    });
+
+    // Check URL hash and activate appropriate tab
+    setTimeout(() => {
+        const hash = window.location.hash.substring(1);
+        if (hash && ['anime', 'video', 'web', '3dprint'].includes(hash)) {
+            activateTab(hash);
+        } else {
+            // Default to anime tab
+            activateTab('anime');
+        }
+    }, 50);
+});
+
+// Home hero dynamic alignment (logo-centered layout)
+document.addEventListener('DOMContentLoaded', function () {
+    // Disable JS alignment on home; rely on CSS grid to avoid overlaps
+    if (document.body.classList.contains('home')) return;
+    const container = document.querySelector('.hero-container');
+    const logo = document.getElementById('hero-lottie');
+    const leftMenu = document.querySelector('.hero-index');
+    const copy = document.querySelector('.hero-copy');
+    if (!container || !logo || !leftMenu || !copy) return;
+
+    function align() {
+        const vw = window.innerWidth || document.documentElement.clientWidth;
+        // Reset on small screens
+        if (vw <= 768) {
+            leftMenu.style.transform = '';
+            copy.style.transform = '';
+            return;
+        }
+
+        const containerRect = container.getBoundingClientRect();
+        const logoSvg = logo.querySelector('svg');
+        const logoRect = (logoSvg ? logoSvg : logo).getBoundingClientRect();
+        const leftRect = leftMenu.getBoundingClientRect();
+        const copyRect = copy.getBoundingClientRect();
+        // spacing between logo edge and text blocks (responsive clamp 56-120px)
+        const margin = Math.max(56, Math.min(120, Math.round(vw * 0.06)));
+
+        // Target positions: left block hugs logo's left edge, right block hugs right edge
+        const targetLeftRight = logoRect.left - margin; // where left block's right edge should be
+        const leftTargetLeft = targetLeftRight - leftRect.width;
+        const leftDx = leftTargetLeft - leftRect.left;
+
+        const copyTargetLeft = logoRect.right + margin; // where right block's left edge should be
+        const copyDx = copyTargetLeft - copyRect.left;
+
+        // Clamp inside container bounds
+        const minLeft = containerRect.left + 8;
+        const maxRight = containerRect.right - 8;
+
+        let finalLeftDx = leftDx;
+        let finalCopyDx = copyDx;
+
+        // Prevent left from going outside
+        if (leftRect.left + finalLeftDx < minLeft) {
+            finalLeftDx = minLeft - leftRect.left;
+        }
+        // Prevent copy from overflowing right
+        if (copyRect.right + finalCopyDx > maxRight) {
+            finalCopyDx = maxRight - copyRect.right;
+        }
+
+        leftMenu.style.willChange = 'transform';
+        copy.style.willChange = 'transform';
+        leftMenu.style.transform = `translate3d(${finalLeftDx}px,0,0)`;
+        copy.style.transform = `translate3d(${finalCopyDx}px,0,0)`;
+        // Constrain copy width to container's right boundary
+        const maxCopyWidth = Math.max(320, Math.floor((containerRect.right - margin) - (logoRect.right + margin)));
+        copy.style.maxWidth = `${maxCopyWidth}px`;
+    }
+
+    const ro = new ResizeObserver(() => {
+        // use rAF to avoid layout thrash on continuous resize
+        window.requestAnimationFrame(align);
+    });
+    ro.observe(document.documentElement);
+    ro.observe(container);
+    window.addEventListener('load', align, { once: true });
+    // retry a few times while Lottie builds DOM
+    let tries = 0; const t = setInterval(() => { align(); tries++; if (tries > 10) clearInterval(t); }, 120);
+});

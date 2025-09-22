@@ -4,32 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>サービス - 株式会社Raiose</title>
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/artoo-styles.css">
     <link rel="stylesheet" href="../css/pages.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <a href="../index.html">Raiose</a>
+    <!-- Header Navigation (Artoo) -->
+    <header class="header-nav">
+        <div class="header-container">
+            <div class="header-logo">
+                <a href="../index.html"><img src="../images/Raiose_logo_type.svg" alt="Raiose" /></a>
             </div>
-            <div class="nav-menu">
+            <nav class="header-menu">
                 <a href="../index.html" class="nav-link">ホーム</a>
-                <a href="services.html" class="nav-link">サービス</a>
-                <a href="../index.html#about" class="nav-link">私たちについて</a>
+                <a href="../about.html" class="nav-link">私たちについて</a>
                 <a href="company.html" class="nav-link">会社情報</a>
-                <a href="contact.html" class="nav-link">お問い合わせ</a>
+            </nav>
+            <div class="header-actions">
+                <a href="contact.html" class="btn-cta">お問い合わせ</a>
             </div>
-            <div class="nav-toggle">
+            <button class="mobile-toggle" aria-label="メニュー">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
+            </button>
         </div>
-    </nav>
+    </header>
+
+    <!-- Left Rail -->
+    <aside class="left-rail">
+        <button class="hamburger" aria-label="サイドメニュー">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div class="social-links">
+            <a href="#" aria-label="Facebook">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M20 10C20 4.477 15.523 0 10 0S0 4.477 0 10c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V10h2.54V7.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V10h2.773l-.443 2.89h-2.33v6.988C16.343 19.128 20 14.991 20 10z" fill="currentColor"/>
+                </svg>
+            </a>
+            <a href="#" aria-label="LinkedIn">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M18.5 0h-17C.67 0 0 .67 0 1.5v17c0 .83.67 1.5 1.5 1.5h17c.83 0 1.5-.67 1.5-1.5v-17c0-.83-.67-1.5-1.5-1.5zM6 17H3V8h3v9zM4.5 6.3c-1 0-1.8-.8-1.8-1.8s.8-1.8 1.8-1.8 1.8.8 1.8 1.8-.8 1.8-1.8 1.8zM17 17h-3v-4.7c0-1.1-.4-1.8-1.4-1.8-.8 0-1.2.5-1.4 1-.1.2-.1.4-.1.7V17h-3V8h3v1.3c.4-.6 1.1-1.5 2.7-1.5 2 0 3.5 1.3 3.5 4.1V17z" fill="currentColor"/>
+                </svg>
+            </a>
+            <a href="https://x.com/Rase_io" aria-label="X" target="_blank" rel="noopener noreferrer">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M15.969 0H19.062l-6.75 7.906L20 20h-6.187l-4.719-6.187L3.812 20H.687l7.22-8.437L.5 0h6.344l4.281 5.656L15.969 0zm-1.094 18H13.5L6.187 2H7.656L14.875 18z" fill="currentColor"/>
+                </svg>
+            </a>
+        </div>
+    </aside>
 
     <section class="page-hero">
         <div class="container">
@@ -42,305 +70,119 @@
         <div class="container">
             <div class="service-intro">
                 <h2>創造と技術の融合で、新しい価値を</h2>
-                <p>私たちは、アニメ制作、映像制作、Web制作、3Dプリント制作の4つの分野で、お客様のアイデアを形にします。それぞれの技術を組み合わせることで、これまでにない価値を創造し、お客様のビジネスの成功に貢献します。</p>
+                <p>4つの分野でできることと、具体的な制作実績をご紹介します。</p>
             </div>
 
-            <div class="service-section" id="animation">
-                <div class="service-header">
+            <div class="svc-tabs" role="tablist" aria-label="Services">
+                <button class="tab" data-service="anime" id="tab-anime" aria-selected="false">アニメ制作</button>
+                <button class="tab" data-service="video" id="tab-video" aria-selected="false">映像制作</button>
+                <button class="tab" data-service="web" id="tab-web" aria-selected="false">Web制作</button>
+                <button class="tab" data-service="3dprint" id="tab-3dprint" aria-selected="false">3Dプリント</button>
+            </div>
+
+            <div class="svc-panels">
+                <section class="svc-panel" data-service="anime" role="tabpanel" aria-labelledby="tab-anime">
+                    <h3 class="svc-title">アニメ制作</h3>
+                    <p class="svc-desc">オリジナルアニメ、商品紹介、教育用など幅広く対応。企画〜絵コンテ〜アニメーションまで一貫制作。</p>
+                    <div class="svc-gallery">
+                        <div class="work-card">
+                            <div class="work-thumb" style="background-image:url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22720%22 height=%22405%22%3E%3Cdefs%3E%3ClinearGradient id=%22a1%22 x1=%220%22 y1=%220%22 x2=%221%22 y2=%221%22%3E%3Cstop stop-color=%22%23667eea%22/%3E%3Cstop offset=%221%22 stop-color=%22%23764ba2%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width=%22720%22 height=%22405%22 rx=%2220%22 fill=%22url(%23a1)%22/%3E%3C/svg%3E');"></div>
+                            <h4 class="work-title">Brand Story Short</h4>
+                            <p class="work-meta">60秒 / モーショングラフィックス</p>
+                        </div>
+                        <div class="work-card">
+                            <div class="work-thumb" style="background-image:url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22720%22 height=%22405%22%3E%3Cdefs%3E%3ClinearGradient id=%22a2%22 x1=%220%22 y1=%220%22 x2=%221%22 y2=%221%22%3E%3Cstop stop-color=%22%234facfe%22/%3E%3Cstop offset=%221%22 stop-color=%22%2300f2fe%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width=%22720%22 height=%22405%22 rx=%2220%22 fill=%22url(%23a2)%22/%3E%3C/svg%3E');"></div>
+                            <h4 class="work-title">教育アニメーション</h4>
+                            <p class="work-meta">3分 / キャラクター解説</p>
+                        </div>
+                        <div class="work-card">
+                            <div class="work-thumb" style="background-image:url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22720%22 height=%22405%22%3E%3Cdefs%3E%3ClinearGradient id=%22a3%22 x1=%220%22 y1=%220%22 x2=%221%22 y2=%221%22%3E%3Cstop stop-color=%22%23f093fb%22/%3E%3Cstop offset=%221%22 stop-color=%22%23f5576c%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width=%22720%22 height=%22405%22 rx=%2220%22 fill=%22url(%23a3)%22/%3E%3C/svg%3E');"></div>
+                            <h4 class="work-title">商品PRアニメ</h4>
+                            <p class="work-meta">90秒 / 2Dアニメ</p>
+                        </div>
+                        <div class="work-card">
+                            <div class="work-thumb" style="background-image:url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22720%22 height=%22405%22%3E%3Cdefs%3E%3ClinearGradient id=%22a4%22 x1=%220%22 y1=%220%22 x2=%221%22 y2=%221%22%3E%3Cstop stop-color=%22%230066FF%22/%3E%3Cstop offset=%221%22 stop-color=%22%2320C997%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width=%22720%22 height=%22405%22 rx=%2220%22 fill=%22url(%23a4)%22/%3E%3C/svg%3E');"></div>
+                            <h4 class="work-title">SNS用クリップ</h4>
+                            <p class="work-meta">15秒×4本 / シリーズ</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="svc-panel" data-service="video" role="tabpanel" aria-labelledby="tab-video">
+                    <h3 class="svc-title">映像制作</h3>
+                    <p class="svc-desc">企業PR、イベント、インタビュー、ドキュメンタリーなど目的に合わせた撮影〜編集。</p>
+                    <div class="svc-gallery">
+                        <div class="work-card"><div class="work-thumb" style="background-image:url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22720%22 height=%22405%22%3E%3Crect width=%22720%22 height=%22405%22 rx=%2220%22 fill=%22%232D3740%22/%3E%3C/svg%3E');"></div><h4 class="work-title">イベントダイジェスト</h4><p class="work-meta">3分 / マルチカメラ</p></div>
+                        <div class="work-card"><div class="work-thumb" style="background:#414D55;"></div><h4 class="work-title">企業インタビュー</h4><p class="work-meta">5分 / 字幕付き</p></div>
+                        <div class="work-card"><div class="work-thumb" style="background:#333F47;"></div><h4 class="work-title">店舗紹介</h4><p class="work-meta">90秒 / シネマティック</p></div>
+                        <div class="work-card"><div class="work-thumb" style="background:#555D66;"></div><h4 class="work-title">商品PV</h4><p class="work-meta">45秒 / モーショングラフィックス</p></div>
+                    </div>
+                </section>
+
+                <section class="svc-panel" data-service="web" role="tabpanel" aria-labelledby="tab-web">
+                    <h3 class="svc-title">Web制作</h3>
+                    <p class="svc-desc">コーポレート/LP/EC/アプリ開発。設計からUI/UX、実装、パフォーマンス最適化まで。</p>
+                    <div class="svc-gallery">
+                        <div class="work-card"><div class="work-thumb" style="background:#4C575E;"></div><h4 class="work-title">コーポレートサイト</h4><p class="work-meta">デザイン/実装/保守</p></div>
+                        <div class="work-card"><div class="work-thumb" style="background:#667eea;"></div><h4 class="work-title">LP制作</h4><p class="work-meta">計測連動 / ABテスト</p></div>
+                        <div class="work-card"><div class="work-thumb" style="background:#764ba2;"></div><h4 class="work-title">Webアプリ</h4><p class="work-meta">React/Node</p></div>
+                        <div class="work-card"><div class="work-thumb" style="background:#4facfe;"></div><h4 class="work-title">EC構築</h4><p class="work-meta">決済/在庫/分析</p></div>
+                    </div>
+                </section>
+
+                <section class="svc-panel" data-service="3dprint" role="tabpanel" aria-labelledby="tab-3dprint">
+                    <h3 class="svc-title">3Dプリント</h3>
+                    <p class="svc-desc">試作〜小ロットまで、素材・造形方式に最適化して高品質に造形。後処理も対応。</p>
+                    <div class="svc-gallery">
+                        <div class="work-card"><div class="work-thumb" style="background:#f093fb;"></div><h4 class="work-title">プロトタイプ</h4><p class="work-meta">ABS / 高精細</p></div>
+                        <div class="work-card"><div class="work-thumb" style="background:#f5576c;"></div><h4 class="work-title">モックアップ</h4><p class="work-meta">レジン / 仕上げ加工</p></div>
+                        <div class="work-card"><div class="work-thumb" style="background:#00f2fe;"></div><h4 class="work-title">小ロット生産</h4><p class="work-meta">耐久樹脂 / 柔軟材</p></div>
+                        <div class="work-card"><div class="work-thumb" style="background:#20C997;"></div><h4 class="work-title">カスタムパーツ</h4><p class="work-meta">設計〜造形一括</p></div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </section>
+
                     <div class="service-icon-large">
                         <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
                             <circle cx="32" cy="32" r="28" stroke="currentColor" stroke-width="2"/>
                             <path d="M24 32L30 38L40 26" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </div>
-                    <div class="service-title-block">
-                        <h2>アニメ制作</h2>
-                        <p class="service-tagline">心を動かす物語と映像美</p>
-                    </div>
-                </div>
-                <div class="service-content">
-                    <div class="service-description">
-                        <p>高品質なアニメーション制作を通じて、ブランドストーリーを魅力的に伝えます。キャラクターデザインから動画制作まで、一貫したサービスを提供します。</p>
-                        <div class="service-features">
-                            <h3>提供サービス</h3>
-                            <ul>
-                                <li>オリジナルアニメーション制作</li>
-                                <li>商品・サービス紹介アニメ</li>
-                                <li>教育・研修用アニメーション</li>
-                                <li>キャラクターデザイン・開発</li>
-                                <li>モーショングラフィックス</li>
-                                <li>2D/3Dアニメーション</li>
-                            </ul>
-                        </div>
-                        <div class="service-process">
-                            <h3>制作プロセス</h3>
-                            <div class="process-steps">
-                                <div class="process-step">
-                                    <span class="step-number">01</span>
-                                    <h4>企画・構成</h4>
-                                    <p>お客様のニーズをヒアリングし、最適な企画を提案</p>
-                                </div>
-                                <div class="process-step">
-                                    <span class="step-number">02</span>
-                                    <h4>デザイン・絵コンテ</h4>
-                                    <p>キャラクターや世界観をデザインし、ストーリーボードを作成</p>
-                                </div>
-                                <div class="process-step">
-                                    <span class="step-number">03</span>
-                                    <h4>アニメーション制作</h4>
-                                    <p>プロフェッショナルな技術で動きのある映像を制作</p>
-                                </div>
-                                <div class="process-step">
-                                    <span class="step-number">04</span>
-                                    <h4>仕上げ・納品</h4>
-                                    <p>音響効果や編集を施し、完成品を納品</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="service-showcase">
-                        <div class="showcase-card">
-                            <h4>実績</h4>
-                            <ul>
-                                <li>企業PR動画 50本以上</li>
-                                <li>教育コンテンツ 30本以上</li>
-                                <li>キャラクター開発 20体以上</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
             </div>
 
-            <div class="service-section" id="video">
-                <div class="service-header">
-                    <div class="service-icon-large">
-                        <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
-                            <rect x="12" y="16" width="40" height="32" rx="2" stroke="currentColor" stroke-width="2"/>
-                            <path d="M28 32L36 27V37L28 32Z" fill="currentColor"/>
-                        </svg>
-                    </div>
-                    <div class="service-title-block">
-                        <h2>映像制作</h2>
-                        <p class="service-tagline">伝えたいメッセージを映像で表現</p>
-                    </div>
-                </div>
-                <div class="service-content">
-                    <div class="service-description">
-                        <p>企業PR、商品紹介、イベント記録など、目的に応じた効果的な映像コンテンツを制作します。企画から撮影、編集まで一貫してサポートします。</p>
-                        <div class="service-features">
-                            <h3>提供サービス</h3>
-                            <ul>
-                                <li>企業PR・ブランディング映像</li>
-                                <li>商品・サービス紹介動画</li>
-                                <li>イベント・セミナー撮影</li>
-                                <li>インタビュー・ドキュメンタリー</li>
-                                <li>YouTube・SNS用動画コンテンツ</li>
-                                <li>ドローン空撮</li>
-                            </ul>
-                        </div>
-                        <div class="service-benefits">
-                            <h3>映像制作のメリット</h3>
-                            <div class="benefit-cards">
-                                <div class="benefit-card">
-                                    <h4>高い訴求力</h4>
-                                    <p>視覚と聴覚に訴えることで、強い印象を残します</p>
-                                </div>
-                                <div class="benefit-card">
-                                    <h4>情報伝達力</h4>
-                                    <p>複雑な情報も分かりやすく伝えることができます</p>
-                                </div>
-                                <div class="benefit-card">
-                                    <h4>拡散性</h4>
-                                    <p>SNSでの共有により、広範囲への情報発信が可能です</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="service-showcase">
-                        <div class="showcase-card">
-                            <h4>対応形式</h4>
-                            <ul>
-                                <li>4K/8K高画質映像</li>
-                                <li>360度VR映像</li>
-                                <li>ライブ配信</li>
-                                <li>各種動画フォーマット</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
 
-            <div class="service-section" id="web">
-                <div class="service-header">
-                    <div class="service-icon-large">
-                        <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
-                            <rect x="8" y="12" width="48" height="36" rx="2" stroke="currentColor" stroke-width="2"/>
-                            <path d="M8 22H56" stroke="currentColor" stroke-width="2"/>
-                            <circle cx="16" cy="17" r="1.5" fill="currentColor"/>
-                            <circle cx="22" cy="17" r="1.5" fill="currentColor"/>
-                            <circle cx="28" cy="17" r="1.5" fill="currentColor"/>
-                        </svg>
-                    </div>
-                    <div class="service-title-block">
-                        <h2>Web制作</h2>
-                        <p class="service-tagline">デジタル時代の顔となるWebサイト</p>
-                    </div>
-                </div>
-                <div class="service-content">
-                    <div class="service-description">
-                        <p>ユーザー体験を重視した、美しく機能的なWebサイトやWebアプリケーションを開発します。最新技術を活用し、ビジネスの成長を支援します。</p>
-                        <div class="service-features">
-                            <h3>提供サービス</h3>
-                            <ul>
-                                <li>コーポレートサイト制作</li>
-                                <li>ECサイト構築</li>
-                                <li>ランディングページ制作</li>
-                                <li>Webアプリケーション開発</li>
-                                <li>レスポンシブデザイン</li>
-                                <li>CMS導入・カスタマイズ</li>
-                                <li>SEO対策・アクセス解析</li>
-                            </ul>
-                        </div>
-                        <div class="tech-stack">
-                            <h3>使用技術</h3>
-                            <div class="tech-grid">
-                                <div class="tech-item">
-                                    <h4>フロントエンド</h4>
-                                    <p>HTML5, CSS3, JavaScript, React, Vue.js, Next.js</p>
-                                </div>
-                                <div class="tech-item">
-                                    <h4>バックエンド</h4>
-                                    <p>Node.js, Python, PHP, Ruby on Rails</p>
-                                </div>
-                                <div class="tech-item">
-                                    <h4>データベース</h4>
-                                    <p>MySQL, PostgreSQL, MongoDB</p>
-                                </div>
-                                <div class="tech-item">
-                                    <h4>インフラ</h4>
-                                    <p>AWS, Google Cloud, Docker</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="service-showcase">
-                        <div class="showcase-card">
-                            <h4>特徴</h4>
-                            <ul>
-                                <li>モバイルファースト設計</li>
-                                <li>高速表示最適化</li>
-                                <li>セキュリティ対策</li>
-                                <li>保守・運用サポート</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
 
-            <div class="service-section" id="3dprint">
-                <div class="service-header">
-                    <div class="service-icon-large">
-                        <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
-                            <path d="M32 12L12 24V40L32 52L52 40V24L32 12Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-                            <path d="M32 12V32" stroke="currentColor" stroke-width="2"/>
-                            <path d="M12 24L32 36L52 24" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-                            <path d="M32 36V52" stroke="currentColor" stroke-width="2"/>
-                        </svg>
-                    </div>
-                    <div class="service-title-block">
-                        <h2>3Dプリント制作</h2>
-                        <p class="service-tagline">アイデアを手に取れる形に</p>
-                    </div>
-                </div>
-                <div class="service-content">
-                    <div class="service-description">
-                        <p>最新の3Dプリント技術を活用し、プロトタイプから最終製品まで、高品質な造形物を制作します。小ロット生産にも対応し、スピーディーな開発を支援します。</p>
-                        <div class="service-features">
-                            <h3>提供サービス</h3>
-                            <ul>
-                                <li>プロトタイプ制作</li>
-                                <li>製品モックアップ作成</li>
-                                <li>小ロット量産</li>
-                                <li>カスタムパーツ製造</li>
-                                <li>3Dモデリング・設計</li>
-                                <li>後処理・仕上げ加工</li>
-                            </ul>
-                        </div>
-                        <div class="materials">
-                            <h3>対応素材</h3>
-                            <div class="material-grid">
-                                <div class="material-item">
-                                    <h4>樹脂系</h4>
-                                    <p>PLA, ABS, PETG, TPU, レジン</p>
-                                </div>
-                                <div class="material-item">
-                                    <h4>金属系</h4>
-                                    <p>アルミニウム, ステンレス, チタン</p>
-                                </div>
-                                <div class="material-item">
-                                    <h4>特殊素材</h4>
-                                    <p>カーボンファイバー, 生分解性素材</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="applications">
-                            <h3>活用分野</h3>
-                            <ul>
-                                <li>製品開発・試作</li>
-                                <li>建築模型・ジオラマ</li>
-                                <li>医療機器部品</li>
-                                <li>教育教材</li>
-                                <li>アート作品・フィギュア</li>
-                                <li>カスタムアクセサリー</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="service-showcase">
-                        <div class="showcase-card">
-                            <h4>技術仕様</h4>
-                            <ul>
-                                <li>最大造形サイズ: 500×500×500mm</li>
-                                <li>積層ピッチ: 0.05mm〜</li>
-                                <li>精度: ±0.1mm</li>
-                                <li>表面処理対応</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="service-cta">
-                <h2>お客様のアイデアを形にします</h2>
-                <p>各サービスの詳細や料金について、お気軽にお問い合わせください。<br>お客様のニーズに合わせた最適なソリューションをご提案いたします。</p>
-                <a href="contact.html" class="btn btn-primary">お問い合わせはこちら</a>
-            </div>
-        </div>
-    </section>
-
+            
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-info">
+                <div class="footer-column">
                     <h3>株式会社Raiose</h3>
-                    <p>〒211-0025<br>神奈川県川崎市中原区木月3-28-6-1</p>
+                    <p>〒211-0025<br>神奈川県川崎市中原区木月3-32-11<br>ホンダソーラー神奈川中ビル305</p>
                     <p>Email: m.hayashi@raiose.com</p>
                 </div>
-                <div class="footer-links">
-                    <h4>リンク</h4>
+                <div class="footer-column">
                     <ul>
-                        <li><a href="services.html">サービス</a></li>
-                        <li><a href="../index.html#about">私たちについて</a></li>
+                        <li><a href="../about.html">私たちについて</a></li>
                         <li><a href="company.html">会社情報</a></li>
                         <li><a href="contact.html">お問い合わせ</a></li>
                     </ul>
                 </div>
+                <div class="footer-column">
+                    <h4>連絡先</h4>
+                    <p>Email: <a href="mailto:m.hayashi@raiose.com">m.hayashi@raiose.com</a></p>
+                </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2023 株式会社Raiose. All rights reserved.</p>
+                <p>&copy; <span id="year"></span> 株式会社Raiose. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <script src="../js/script.js"></script>
+    <script src="../js/artoo-script.js"></script>
 </body>
 </html>

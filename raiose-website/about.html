@@ -9,20 +9,20 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="about-page">
     <!-- Header Navigation -->
     <header class="header-nav">
         <div class="header-container">
             <div class="header-logo">
-                <a href="index.html">Raiose</a>
+                <a href="index.html"><img src="images/Raiose_logo_type.svg" alt="Raiose" /></a>
             </div>
             <nav class="header-menu">
                 <a href="index.html" class="nav-link">ホーム</a>
                 <a href="about.html" class="nav-link active">私たちについて</a>
-                <a href="company.html" class="nav-link">会社情報</a>
+                <a href="pages/company.html" class="nav-link">会社情報</a>
             </nav>
             <div class="header-actions">
-                <a href="contact.html" class="btn-cta">お問い合わせ</a>
+                <a href="pages/contact.html" class="btn-cta">お問い合わせ</a>
             </div>
             <button class="mobile-toggle" aria-label="メニュー">
                 <span></span>
@@ -50,7 +50,7 @@
                     <path d="M18.5 0h-17C.67 0 0 .67 0 1.5v17c0 .83.67 1.5 1.5 1.5h17c.83 0 1.5-.67 1.5-1.5v-17c0-.83-.67-1.5-1.5-1.5zM6 17H3V8h3v9zM4.5 6.3c-1 0-1.8-.8-1.8-1.8s.8-1.8 1.8-1.8 1.8.8 1.8 1.8-.8 1.8-1.8 1.8zM17 17h-3v-4.7c0-1.1-.4-1.8-1.4-1.8-.8 0-1.2.5-1.4 1-.1.2-.1.4-.1.7V17h-3V8h3v1.3c.4-.6 1.1-1.5 2.7-1.5 2 0 3.5 1.3 3.5 4.1V17z" fill="currentColor"/>
                 </svg>
             </a>
-            <a href="#" aria-label="Twitter">
+            <a href="https://x.com/Rase_io" aria-label="X" target="_blank" rel="noopener noreferrer">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                     <path d="M15.969 0H19.062l-6.75 7.906L20 20h-6.187l-4.719-6.187L3.812 20H.687l7.22-8.437L.5 0h6.344l4.281 5.656L15.969 0zm-1.094 18H13.5L6.187 2H7.656L14.875 18z" fill="currentColor"/>
                 </svg>
@@ -58,49 +58,63 @@
         </div>
     </aside>
 
+    <!-- Hero Section (About) -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-index">
+                <div class="index-label">/02 私たち</div>
+                <div class="index-divider"></div>
+                <h3 class="index-title">Raiose</h3>
+            </div>
+            <div class="hero-visual">
+                <div class="visual-container">
+                    <!-- Optional visual space for parity with home -->
+                </div>
+            </div>
+            <div class="hero-copy">
+                <h1 class="hero-title">クリエイティブとテクノロジーで<br>価値をかたちにする</h1>
+                <p class="hero-subtitle">映像・デザイン・プロダクトの力で、人の心を動かす体験を生み出します。</p>
+            </div>
+        </div>
+    </section>
+
     <!-- About Section -->
     <section class="about page-content">
         <div class="container">
             <h1 class="page-title">私たちについて</h1>
-            
-            <div class="about-content">
-                <div class="about-text">
-                    <div class="about-block">
-                        <h2>ミッション</h2>
-                        <p class="highlight">アイデアをかたちにし、ものづくりと映像を通じて人々の生活を豊かにする</p>
-                        <p>プロダクト・映像・デザインを組み合わせて、新しい価値を世の中に提供します。創造と技術を融合させることで、日常をより便利で楽しくします。</p>
-                    </div>
-                    
-                    <div class="about-block">
-                        <h2>ビジョン</h2>
-                        <p class="highlight">テクノロジーとクリエイティブの架け橋となり、驚きと感動を届けるブランドへ</p>
-                        <p>日本発のものづくり企業として、国際的にも評価されるブランドに成長することを目指します。</p>
-                    </div>
-                    
-                    <div class="about-block">
-                        <h2>バリュー</h2>
-                        <div class="values-list">
-                            <div class="value-item">
-                                <h3>挑戦</h3>
-                                <p>常識にとらわれず、新しい技術や表現方法に積極的に挑む</p>
-                            </div>
-                            <div class="value-item">
-                                <h3>誠実</h3>
-                                <p>クライアント・ユーザー・仲間に対して誠実であることを忘れない</p>
-                            </div>
-                            <div class="value-item">
-                                <h3>融合</h3>
-                                <p>映像 × デザイン × 製造の力を組み合わせ、他にない価値を生み出す</p>
-                            </div>
-                            <div class="value-item">
-                                <h3>品質</h3>
-                                <p>細部までこだわり、長く愛されるものを作り続ける</p>
-                            </div>
-                            <div class="value-item">
-                                <h3>共創</h3>
-                                <p>仲間やクライアントと共に考え、共に成長していく姿勢を大切にする</p>
-                            </div>
+
+            <div class="philosophy-section" style="margin-top: 40px;">
+                <h2>企業理念</h2>
+                <div class="philosophy-grid">
+                    <div class="philosophy-card">
+                        <div class="philosophy-icon">
+                            <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                                <path d="M24 4L6 14V24C6 35 24 44 24 44C24 44 42 35 42 24V14L24 4Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M24 15V24" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                <circle cx="24" cy="28" r="1" fill="currentColor"/>
+                            </svg>
                         </div>
+                        <h3>ミッション</h3>
+                        <p>アイデアをかたちにし、ものづくりと映像を通じて人々の生活を豊かにする</p>
+                    </div>
+                    <div class="philosophy-card">
+                        <div class="philosophy-icon">
+                            <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                                <circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="2"/>
+                                <path d="M24 14V24L30 30" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <h3>ビジョン</h3>
+                        <p>テクノロジーとクリエイティブの架け橋となり、驚きと感動を届けるブランドへ</p>
+                    </div>
+                    <div class="philosophy-card">
+                        <div class="philosophy-icon">
+                            <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                                <path d="M24 10L28.18 18.48L37.5 19.84L30.75 26.42L32.36 35.7L24 31.28L15.64 35.7L17.25 26.42L10.5 19.84L19.82 18.48L24 10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <h3>バリュー</h3>
+                        <p>挑戦・誠実・融合・品質・共創を大切にし、新しい価値を生み出し続ける</p>
                     </div>
                 </div>
             </div>
@@ -113,14 +127,14 @@
             <div class="footer-content">
                 <div class="footer-column">
                     <h3>株式会社Raiose</h3>
-                    <p>〒211-0025<br>神奈川県川崎市中原区木月3-28-6-1</p>
+                    <p>〒211-0025<br>神奈川県川崎市中原区木月3-32-11<br>ホンダソーラー神奈川中ビル305</p>
                     <p>Email: m.hayashi@raiose.com</p>
                 </div>
                 <div class="footer-column">
                     <ul>
                         <li><a href="about.html">私たちについて</a></li>
-                        <li><a href="company.html">会社情報</a></li>
-                        <li><a href="contact.html">お問い合わせ</a></li>
+                        <li><a href="pages/company.html">会社情報</a></li>
+                        <li><a href="pages/contact.html">お問い合わせ</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">

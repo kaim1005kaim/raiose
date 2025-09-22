@@ -5,24 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>株式会社Raiose - アイデアをかたちに</title>
     <link rel="stylesheet" href="css/artoo-styles.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Crect width='128' height='128' rx='24' fill='%232D3740'/%3E%3Ctext x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' font-family='Inter, sans-serif' font-size='64' fill='%23E6EDF3'%3ER%3C/text%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+      }
+    }
+    </script>
 </head>
-<body>
+<body class="home">
+    <!-- Intro Overlay -->
+    <div id="intro-overlay" aria-hidden="true">
+        <div class="intro-content">
+            <div class="intro-logo">
+                <img src="images/Raiose_logo_type.svg" alt="Raiose">
+            </div>
+        </div>
+    </div>
     <!-- Header Navigation -->
     <header class="header-nav">
         <div class="header-container">
             <div class="header-logo">
-                <a href="index.html">Raiose</a>
+                <a href="index.html"><img src="images/Raiose_logo_type.svg" alt="Raiose" /></a>
             </div>
             <nav class="header-menu">
                 <a href="index.html" class="nav-link active">ホーム</a>
                 <a href="about.html" class="nav-link">私たちについて</a>
-                <a href="company.html" class="nav-link">会社情報</a>
+                <a href="pages/company.html" class="nav-link">会社情報</a>
             </nav>
             <div class="header-actions">
-                <a href="contact.html" class="btn-cta">お問い合わせ</a>
+                <a href="pages/contact.html" class="btn-cta">お問い合わせ</a>
             </div>
             <button class="mobile-toggle" aria-label="メニュー">
                 <span></span>
@@ -50,7 +67,7 @@
                     <path d="M18.5 0h-17C.67 0 0 .67 0 1.5v17c0 .83.67 1.5 1.5 1.5h17c.83 0 1.5-.67 1.5-1.5v-17c0-.83-.67-1.5-1.5-1.5zM6 17H3V8h3v9zM4.5 6.3c-1 0-1.8-.8-1.8-1.8s.8-1.8 1.8-1.8 1.8.8 1.8 1.8-.8 1.8-1.8 1.8zM17 17h-3v-4.7c0-1.1-.4-1.8-1.4-1.8-.8 0-1.2.5-1.4 1-.1.2-.1.4-.1.7V17h-3V8h3v1.3c.4-.6 1.1-1.5 2.7-1.5 2 0 3.5 1.3 3.5 4.1V17z" fill="currentColor"/>
                 </svg>
             </a>
-            <a href="#" aria-label="Twitter">
+            <a href="https://x.com/Rase_io" aria-label="X" target="_blank" rel="noopener noreferrer">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                     <path d="M15.969 0H19.062l-6.75 7.906L20 20h-6.187l-4.719-6.187L3.812 20H.687l7.22-8.437L.5 0h6.344l4.281 5.656L15.969 0zm-1.094 18H13.5L6.187 2H7.656L14.875 18z" fill="currentColor"/>
                 </svg>
@@ -64,18 +81,33 @@
             <!-- Left Index -->
             <div class="hero-index">
                 <div class="index-label">/01 事業領域</div>
+                <div class="index-divider"></div>
                 <h3 class="index-title">サービス</h3>
                 <div class="index-links">
-                    <a href="#svc-anime">アニメ制作</a>
-                    <a href="#svc-video">映像制作</a>
-                    <a href="#svc-web">Web制作</a>
-                    <a href="#svc-3dprint">3Dプリント制作</a>
+                    <a href="pages/services.html#anime">アニメ制作</a>
+                    <a href="pages/services.html#video">映像制作</a>
+                    <a href="pages/services.html#web">Web制作</a>
+                    <a href="pages/services.html#3dprint">3Dプリント制作</a>
                 </div>
             </div>
 
             <!-- Center Visual -->
             <div class="hero-visual">
-                <div class="visual-container" id="hero-3d-container"></div>
+                <div class="visual-container">
+                    <div class="visual-lines">
+                        <div class="line line-horizontal"></div>
+                        <div class="line line-vertical"></div>
+                        <div class="orbit-ring"></div>
+                        <div class="grid-pattern"></div>
+                        <div class="corner-marks">
+                            <div class="corner corner-tl"></div>
+                            <div class="corner corner-tr"></div>
+                            <div class="corner corner-bl"></div>
+                            <div class="corner corner-br"></div>
+                        </div>
+                    </div>
+                    <div id="hero-3d" aria-label="Raiose 3D Logo" role="img"></div>
+                </div>
             </div>
 
             <!-- Right Copy -->
@@ -86,96 +118,7 @@
         </div>
     </section>
 
-    <!-- Events/News Strip -->
-    <section class="info-strip">
-        <div class="strip-container">
-            <div class="strip-card event-card">
-                <div class="card-label">EVENTS</div>
-                <h3>制作事例セミナー</h3>
-                <time>9/30 18:00–19:30</time>
-                <p>最新の制作事例とクリエイティブプロセスをご紹介します</p>
-            </div>
-            <div class="strip-card event-card">
-                <div class="card-label">EVENTS</div>
-                <h3>工房見学デー</h3>
-                <time>10/12 13:00–16:00</time>
-                <p>3Dプリント工房と制作現場を実際にご覧いただけます</p>
-            </div>
-            <div class="strip-card news-card">
-                <div class="card-label">NEWS</div>
-                <div class="news-content">
-                    <img src="data:image/svg+xml,%3Csvg width='120' height='120' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='120' height='120' fill='%23414D55'/%3E%3C/svg%3E" alt="News thumbnail">
-                    <div class="news-text">
-                        <h3>制作実績公開：新プロジェクト</h3>
-                        <p>最新の映像制作プロジェクトが完成しました</p>
-                        <a href="#" class="read-more">Read more →</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="services">
-        <div class="container">
-            <h2 class="section-title">サービス</h2>
-            <p class="section-subtitle">テクノロジーとクリエイティブの融合</p>
-            <!-- Mobile Chip Navigation -->
-            <div class="service-chips">
-                <button class="chip active" data-service="anime">アニメ制作</button>
-                <button class="chip" data-service="video">映像制作</button>
-                <button class="chip" data-service="web">Web制作</button>
-                <button class="chip" data-service="3dprint">3Dプリント</button>
-            </div>
-            <div class="services-grid">
-                <div id="svc-anime" class="service-card" data-service="anime">
-                    <div class="service-icon">
-                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-                            <circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="2"/>
-                            <path d="M16 24L22 30L32 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <h3>アニメ制作</h3>
-                    <p>心を動かすストーリーと美しいビジュアルで、感動的なアニメーション作品を創造します。</p>
-                </div>
-                <div id="svc-video" class="service-card" data-service="video">
-                    <div class="service-icon">
-                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-                            <rect x="8" y="10" width="32" height="24" rx="2" stroke="currentColor" stroke-width="2"/>
-                            <path d="M20 22L28 18V26L20 22Z" fill="currentColor"/>
-                        </svg>
-                    </div>
-                    <h3>映像制作</h3>
-                    <p>企業PR、商品紹介、イベント映像など、目的に応じた効果的な映像コンテンツを制作します。</p>
-                </div>
-                <div id="svc-web" class="service-card" data-service="web">
-                    <div class="service-icon">
-                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-                            <rect x="6" y="8" width="36" height="28" rx="2" stroke="currentColor" stroke-width="2"/>
-                            <path d="M6 16H42" stroke="currentColor" stroke-width="2"/>
-                            <circle cx="12" cy="12" r="1" fill="currentColor"/>
-                            <circle cx="16" cy="12" r="1" fill="currentColor"/>
-                            <circle cx="20" cy="12" r="1" fill="currentColor"/>
-                        </svg>
-                    </div>
-                    <h3>Web制作</h3>
-                    <p>ユーザー体験を重視した、美しく機能的なWebサイトやWebアプリケーションを開発します。</p>
-                </div>
-                <div id="svc-3dprint" class="service-card" data-service="3dprint">
-                    <div class="service-icon">
-                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-                            <path d="M24 8L8 16V32L24 40L40 32V16L24 8Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-                            <path d="M24 8V24" stroke="currentColor" stroke-width="2"/>
-                            <path d="M8 16L24 24L40 16" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-                            <path d="M24 24V40" stroke="currentColor" stroke-width="2"/>
-                        </svg>
-                    </div>
-                    <h3>3Dプリント制作</h3>
-                    <p>アイデアを物理的な形に。プロトタイプから最終製品まで、高品質な3Dプリントサービスを提供します。</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    
 
     <!-- Footer -->
     <footer class="footer">
@@ -183,14 +126,14 @@
             <div class="footer-content">
                 <div class="footer-column">
                     <h3>株式会社Raiose</h3>
-                    <p>〒211-0025<br>神奈川県川崎市中原区木月3-28-6-1</p>
+                    <p>〒211-0025<br>神奈川県川崎市中原区木月3-32-11<br>ホンダソーラー神奈川中ビル305</p>
                     <p>Email: m.hayashi@raiose.com</p>
                 </div>
                 <div class="footer-column">
                     <ul>
                         <li><a href="about.html">私たちについて</a></li>
-                        <li><a href="company.html">会社情報</a></li>
-                        <li><a href="contact.html">お問い合わせ</a></li>
+                        <li><a href="pages/company.html">会社情報</a></li>
+                        <li><a href="pages/contact.html">お問い合わせ</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
@@ -205,6 +148,98 @@
     </footer>
 
     <script src="js/artoo-script.js"></script>
-    <script type="module" src="js/three-hero.js"></script>
+    <script type="module">
+      import * as THREE from 'three';
+      import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+      import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+      document.addEventListener('DOMContentLoaded', function(){
+        const container = document.getElementById('hero-3d');
+        if (!container) return;
+
+        // Scene setup
+        const scene = new THREE.Scene();
+        scene.background = null; // Transparent background
+
+        // Camera setup
+        const camera = new THREE.PerspectiveCamera(
+          45,
+          container.offsetWidth / container.offsetHeight,
+          0.1,
+          1000
+        );
+        camera.position.set(0, 0, 5);
+
+        // Renderer setup
+        const renderer = new THREE.WebGLRenderer({
+          alpha: true,
+          antialias: true
+        });
+        renderer.setSize(container.offsetWidth, container.offsetHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        container.appendChild(renderer.domElement);
+
+        // Lighting
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+        scene.add(ambientLight);
+
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+        directionalLight.position.set(5, 5, 5);
+        scene.add(directionalLight);
+
+        // Controls
+        const controls = new OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.05;
+        controls.enableZoom = false;
+        controls.autoRotate = true;
+        controls.autoRotateSpeed = 2.0;
+
+        // Load GLB model
+        const loader = new GLTFLoader();
+        loader.load(
+          'LOGO.glb',
+          function (gltf) {
+            const model = gltf.scene;
+
+            // Center and scale the model
+            const box = new THREE.Box3().setFromObject(model);
+            const center = box.getCenter(new THREE.Vector3());
+            const size = box.getSize(new THREE.Vector3());
+
+            // Scale to fit
+            const maxDim = Math.max(size.x, size.y, size.z);
+            const scale = 2.5 / maxDim;
+            model.scale.multiplyScalar(scale);
+
+            // Center the model
+            model.position.sub(center.multiplyScalar(scale));
+
+            scene.add(model);
+          },
+          function (xhr) {
+            console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+          },
+          function (error) {
+            console.error('Error loading GLB model:', error);
+          }
+        );
+
+        // Animation loop
+        function animate() {
+          requestAnimationFrame(animate);
+          controls.update();
+          renderer.render(scene, camera);
+        }
+        animate();
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+          camera.aspect = container.offsetWidth / container.offsetHeight;
+          camera.updateProjectionMatrix();
+          renderer.setSize(container.offsetWidth, container.offsetHeight);
+        });
+      });
+    </script>
 </body>
 </html>
