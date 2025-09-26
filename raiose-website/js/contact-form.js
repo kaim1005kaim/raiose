@@ -35,9 +35,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const formData = new FormData(form);
 
             try {
-                // Add redirect URL for Web3Forms
-                formData.append('redirect', window.location.href);
-
                 const response = await fetch(form.action, {
                     method: 'POST',
                     body: formData,
