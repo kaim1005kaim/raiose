@@ -195,53 +195,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Hamburger menu (side drawer)
-    const hamburger = document.querySelector('.hamburger');
-
-    if (hamburger) {
-        hamburger.addEventListener('click', function() {
-            // Create side drawer if not exists
-            let sideDrawer = document.querySelector('.side-drawer');
-            if (!sideDrawer) {
-                sideDrawer = document.createElement('div');
-                sideDrawer.className = 'side-drawer';
-                sideDrawer.innerHTML = `
-                    <div class="drawer-overlay"></div>
-                    <div class="drawer-content">
-                        <button class="drawer-close">&times;</button>
-                        <nav class="drawer-nav">
-                            <a href="#home">ホーム</a>
-                            <a href="#about">私たちについて</a>
-                            <a href="#company">会社情報</a>
-                            <a href="#contact">お問い合わせ</a>
-                        </nav>
-                    </div>
-                `;
-                document.body.appendChild(sideDrawer);
-
-                // Add close handlers
-                const drawerClose = sideDrawer.querySelector('.drawer-close');
-                const drawerOverlay = sideDrawer.querySelector('.drawer-overlay');
-
-                drawerClose.addEventListener('click', function() {
-                    sideDrawer.classList.remove('active');
-                });
-
-                drawerOverlay.addEventListener('click', function() {
-                    sideDrawer.classList.remove('active');
-                });
-
-                // Add link click handlers
-                sideDrawer.querySelectorAll('.drawer-nav a').forEach(link => {
-                    link.addEventListener('click', function() {
-                        sideDrawer.classList.remove('active');
-                    });
-                });
-            }
-
-            sideDrawer.classList.add('active');
-        });
-    }
 
     // Set current year in footer
     const yearSpan = document.getElementById('year');
