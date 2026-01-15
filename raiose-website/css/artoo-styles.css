@@ -1548,8 +1548,8 @@ body.intro-active { overflow: hidden; }
     -webkit-backdrop-filter: blur(16px) saturate(120%);
     border-top: 1px solid rgba(255, 255, 255, 0.18);
     padding: var(--spacing-3xl) var(--spacing-lg) var(--spacing-lg);
-    padding-left: 100px;
     margin-left: 80px;
+    padding-left: 40px;
 }
 
 .footer-content {
