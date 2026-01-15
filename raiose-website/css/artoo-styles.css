@@ -1802,6 +1802,7 @@ body.intro-active { overflow: hidden; }
 
     /* Mobile navigation overlay */
     .mobile-nav {
+        display: block;
         position: fixed;
         top: 0;
         right: -100%;
@@ -2582,8 +2583,9 @@ body.page-entering {
    Enhanced Mobile Responsive Styles
    ======================================== */
 
-/* Improved mobile navigation */
+/* Mobile navigation - hidden by default, shown only when active on mobile */
 .mobile-nav {
+    display: none;
     background: linear-gradient(180deg, var(--bg-0) 0%, var(--bg-1) 100%);
 }
 
