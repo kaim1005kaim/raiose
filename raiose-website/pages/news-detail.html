@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ニュース - 株式会社Raiose</title>
+    <meta name="description" content="株式会社Raioseからのお知らせ">
+    <link rel="stylesheet" href="../css/artoo-styles.css">
+    <link rel="stylesheet" href="../css/pages.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* News Detail Styles */
+        .news-detail-section {
+            padding: 40px var(--spacing-lg) 80px;
+            margin-left: 80px;
+            min-height: calc(100vh - 200px);
+        }
+
+        .news-detail-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .news-back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            color: var(--ink-1);
+            text-decoration: none;
+            font-size: 14px;
+            margin-bottom: var(--spacing-2xl);
+            transition: var(--transition-fast);
+        }
+
+        .news-back-link:hover {
+            color: var(--accent-orange);
+        }
+
+        .news-back-link svg {
+            transform: rotate(180deg);
+        }
+
+        .news-article-header {
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .news-article-date {
+            font-size: 14px;
+            color: var(--accent-orange);
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .news-article-category {
+            display: inline-block;
+            padding: 4px 12px;
+            background: rgba(255, 107, 53, 0.15);
+            color: var(--accent-orange);
+            font-size: 12px;
+            font-weight: 600;
+            border-radius: 4px;
+            margin-left: var(--spacing-md);
+        }
+
+        .news-article-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--ink-0);
+            line-height: 1.4;
+            margin-top: var(--spacing-lg);
+        }
+
+        .news-article-thumbnail {
+            margin-bottom: var(--spacing-2xl);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+        }
+
+        .news-article-thumbnail img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .news-article-body {
+            font-size: 16px;
+            line-height: 1.9;
+            color: var(--ink-1);
+        }
+
+        .news-article-body h2 {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--ink-0);
+            margin: var(--spacing-2xl) 0 var(--spacing-lg);
+            padding-bottom: var(--spacing-sm);
+            border-bottom: 2px solid var(--accent-orange);
+        }
+
+        .news-article-body h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--ink-0);
+            margin: var(--spacing-xl) 0 var(--spacing-md);
+        }
+
+        .news-article-body p {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .news-article-body img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--radius-sm);
+            margin: var(--spacing-lg) 0;
+        }
+
+        .news-article-body a {
+            color: var(--accent-orange);
+            text-decoration: underline;
+        }
+
+        .news-article-body a:hover {
+            text-decoration: none;
+        }
+
+        .news-article-body ul,
+        .news-article-body ol {
+            margin: var(--spacing-lg) 0;
+            padding-left: var(--spacing-xl);
+        }
+
+        .news-article-body li {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .news-article-body blockquote {
+            border-left: 4px solid var(--accent-orange);
+            padding-left: var(--spacing-lg);
+            margin: var(--spacing-xl) 0;
+            color: var(--ink-1);
+            font-style: italic;
+        }
+
+        .loading {
+            text-align: center;
+            padding: var(--spacing-3xl);
+            color: var(--ink-1);
+        }
+
+        @media (max-width: 768px) {
+            .news-detail-section {
+                margin-left: 0;
+                padding: 20px 20px 60px;
+            }
+
+            .news-article-title {
+                font-size: 24px;
+            }
+
+            .news-article-body {
+                font-size: 15px;
+            }
+
+            .news-article-body h2 {
+                font-size: 20px;
+            }
+
+            .news-article-body h3 {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Left Rail -->
+    <aside class="left-rail">
+        <div class="social-links">
+            <a href="https://x.com/Rase_io" aria-label="X" target="_blank" rel="noopener noreferrer">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M15.969 0H19.062l-6.75 7.906L20 20h-6.187l-4.719-6.187L3.812 20H.687l7.22-8.437L.5 0h6.344l4.281 5.656L15.969 0zm-1.094 18H13.5L6.187 2H7.656L14.875 18z" fill="currentColor"/>
+                </svg>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Header Navigation -->
+    <header class="header-nav">
+        <div class="header-container">
+            <div class="header-logo">
+                <a href="../index.html"><img src="../images/Raiose_logo_type.svg" alt="Raiose" /></a>
+            </div>
+            <nav class="header-menu">
+                <a href="../index.html" class="nav-link">ホーム</a>
+                <a href="../about.html" class="nav-link">私たちについて</a>
+                <a href="company.html" class="nav-link">会社情報</a>
+            </nav>
+            <div class="header-actions">
+                <a href="contact.html" class="btn-cta">お問い合わせ</a>
+            </div>
+            <button class="mobile-toggle" aria-label="メニュー">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <section class="page-hero">
+        <div class="container">
+            <h1 class="page-title">ニュース</h1>
+            <p class="page-subtitle">News</p>
+        </div>
+    </section>
+
+    <section class="news-detail-section">
+        <div class="news-detail-container">
+            <a href="../index.html#news" class="news-back-link">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                ニュース一覧に戻る
+            </a>
+
+            <div class="news-detail-content">
+                <div class="loading">読み込み中...</div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="../about.html">私たちについて</a>
+            <span class="footer-divider">|</span>
+            <a href="company.html">会社情報</a>
+            <span class="footer-divider">|</span>
+            <a href="contact.html">お問い合わせ</a>
+            <span class="footer-divider">|</span>
+            <a href="mailto:info@raiose.com">info@raiose.com</a>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; <span id="year"></span> 株式会社Raiose</p>
+        </div>
+    </footer>
+
+    <script src="../js/artoo-script.js"></script>
+    <script src="../js/microcms.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            window.microCMS.renderNewsDetail();
+        });
+    </script>
+</body>
+</html>
