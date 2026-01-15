@@ -1541,85 +1541,52 @@ body.intro-active { overflow: hidden; }
     color: var(--ink-0);
 }
 
-/* Footer */
+/* Footer - Minimal Centered */
 .footer {
-    background: rgba(45, 55, 64, 0.25);
-    backdrop-filter: blur(16px) saturate(120%);
-    -webkit-backdrop-filter: blur(16px) saturate(120%);
-    border-top: 1px solid rgba(255, 255, 255, 0.18);
-    padding: var(--spacing-3xl) var(--spacing-lg) var(--spacing-lg);
-    margin-left: 80px;
-    padding-left: 40px;
+    background: rgba(30, 35, 40, 0.6);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding: var(--spacing-xl) var(--spacing-lg);
+    text-align: center;
 }
 
 .footer-content {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--spacing-3xl);
-    margin-bottom: var(--spacing-2xl);
-    align-items: end;
+    display: none;
 }
 
-.footer-column {
+.footer-links {
     display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-}
-
-.footer-column h3 {
-    font-size: 20px;
-    font-weight: 600;
-    color: var(--ink-0);
-    margin-bottom: var(--spacing-lg);
-}
-
-.footer-column h4 {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--ink-1);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: var(--spacing-lg);
-}
-
-.footer-column p {
-    color: var(--ink-1);
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-lg);
+    flex-wrap: wrap;
     margin-bottom: var(--spacing-md);
-    line-height: 1.6;
 }
 
-.footer-column ul {
-    list-style: none;
-}
-
-.footer-column li {
-    margin-bottom: var(--spacing-sm);
-}
-
-.footer-column a {
-    color: var(--ink-1);
+.footer-links a {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 13px;
+    text-decoration: none;
     transition: var(--transition-fast);
 }
 
-.footer-column a:hover {
-    color: var(--ink-0);
+.footer-links a:hover {
+    color: rgba(255, 255, 255, 0.8);
 }
 
-.footer-column a[href^="mailto:"] {
-    text-decoration: none;
-    border-bottom: 1px solid var(--ink-1);
-}
-
-.footer-column a[href^="mailto:"]:hover {
-    border-bottom-color: var(--ink-0);
+.footer-divider {
+    color: rgba(255, 255, 255, 0.2);
+    font-size: 10px;
 }
 
 .footer-bottom {
-    text-align: center;
-    padding-top: var(--spacing-lg);
-    border-top: 1px solid var(--line-0);
-    color: var(--ink-1);
-    font-size: 14px;
+    color: rgba(255, 255, 255, 0.35);
+    font-size: 12px;
+    border: none;
+    padding: 0;
+}
+
+.footer-bottom p {
+    margin: 0;
 }
 
 /* Search Modal */
