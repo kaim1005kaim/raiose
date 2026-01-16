@@ -6,13 +6,12 @@
     <title>株式会社Raiose - アイデアをかたちに</title>
     <meta name="description" content="映像・デザイン・プロダクトで新しい価値を創造する">
     <style>
-        /* Critical CSS - must match artoo-styles.css exactly */
-        *{margin:0;padding:0;box-sizing:border-box}
-        body{background:#2D3740}
-        #intro-overlay{position:fixed;inset:0;background:#2D3740;z-index:2000;display:flex;align-items:center;justify-content:center;padding:20px;overflow:hidden}
+        /* Critical CSS - prevents flash before external CSS loads */
+        html,body{margin:0;padding:0;background:#2D3740}
+        #intro-overlay{position:fixed;top:0;left:0;right:0;bottom:0;width:100%;height:100%;background:#2D3740;z-index:9999;display:flex;align-items:center;justify-content:center}
         #intro-overlay.hidden{opacity:0;pointer-events:none;transition:opacity 600ms ease}
-        .intro-content{text-align:center;max-width:100%;width:100%}
-        .intro-logo img{height:clamp(60px,14vw,220px);max-width:90%;filter:invert(1) brightness(1)}
+        .intro-logo{display:flex;align-items:center;justify-content:center;width:100%;height:100%}
+        .intro-logo img{height:clamp(60px,14vw,220px);max-width:90vw;filter:invert(1) brightness(1)}
     </style>
     <link rel="stylesheet" href="css/artoo-styles.css">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Crect width='128' height='128' rx='24' fill='%232D3740'/%3E%3Ctext x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' font-family='Inter, sans-serif' font-size='64' fill='%23E6EDF3'%3ER%3C/text%3E%3C/svg%3E">
@@ -42,10 +41,8 @@
 
     <!-- Intro Overlay -->
     <div id="intro-overlay" aria-hidden="true">
-        <div class="intro-content">
-            <div class="intro-logo">
-                <img src="images/Raiose_logo_type.svg" alt="Raiose">
-            </div>
+        <div class="intro-logo">
+            <img src="images/Raiose_logo_type.svg" alt="Raiose">
         </div>
     </div>
     <!-- Header Navigation -->
