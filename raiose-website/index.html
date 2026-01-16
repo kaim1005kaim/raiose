@@ -6,14 +6,52 @@
     <title>株式会社Raiose - アイデアをかたちに</title>
     <meta name="description" content="映像・デザイン・プロダクトで新しい価値を創造する">
     <style>
-        /* Critical CSS - prevents layout shift before stylesheet loads */
+        /* Critical CSS - Force apply to prevent FOUC */
         *{margin:0;padding:0;box-sizing:border-box}
-        body{background:#2D3740;font-family:-apple-system,BlinkMacSystemFont,sans-serif;color:#fff}
-        .header-nav{position:fixed;top:0;left:0;right:0;height:72px;z-index:999;background:rgba(45,55,64,0.25);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);transform:translateY(0);transition:none !important}
-        .header-nav.transitions-enabled{transition:all 350ms cubic-bezier(0.4,0,0.2,1)}
-        .header-container{max-width:1280px;margin:0 auto;padding:0 24px;height:100%;display:flex;align-items:center;justify-content:space-between}
-        .left-rail{position:fixed;left:0;top:0;bottom:0;width:80px;z-index:1000;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:24px 0 40px}
-        .hero{min-height:100vh;padding-top:72px}
+        body{background:#2D3740 !important;font-family:-apple-system,BlinkMacSystemFont,sans-serif;color:#fff}
+
+        /* Disable all transitions initially */
+        .header-nav,.hero,.left-rail{transition:none !important}
+
+        .header-nav{
+            position:fixed !important;
+            top:0 !important;
+            left:0 !important;
+            right:0 !important;
+            height:72px !important;
+            z-index:999 !important;
+            background:rgba(45,55,64,0.25) !important;
+            backdrop-filter:blur(18px) !important;
+            -webkit-backdrop-filter:blur(18px) !important;
+            border-bottom:1px solid rgba(255,255,255,0.18) !important;
+            transform:translateY(0) !important;
+        }
+        .header-container{
+            max-width:1280px !important;
+            margin:0 auto !important;
+            padding:0 24px !important;
+            height:100% !important;
+            display:flex !important;
+            align-items:center !important;
+            justify-content:space-between !important;
+        }
+        .left-rail{
+            position:fixed !important;
+            left:0 !important;
+            top:0 !important;
+            bottom:0 !important;
+            width:80px !important;
+            z-index:1000 !important;
+            display:flex !important;
+            flex-direction:column !important;
+            align-items:center !important;
+            justify-content:flex-end !important;
+            padding:24px 0 40px !important;
+        }
+        .hero{
+            min-height:100vh !important;
+            padding-top:72px !important;
+        }
     </style>
     <link rel="stylesheet" href="css/artoo-styles.css">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Crect width='128' height='128' rx='24' fill='%232D3740'/%3E%3Ctext x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' font-family='Inter, sans-serif' font-size='64' fill='%23E6EDF3'%3ER%3C/text%3E%3C/svg%3E">

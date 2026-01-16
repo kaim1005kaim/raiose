@@ -1,14 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Enable header transitions after initial render to prevent FOUC
+    // Header reference for scroll effects
     const header = document.querySelector('.header-nav');
-    if (header) {
-        // Wait for next frame to ensure styles are applied
-        requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-                header.classList.add('transitions-enabled');
-            });
-        });
-    }
 
     // Page enter animation
     document.body.classList.add('page-entering');
