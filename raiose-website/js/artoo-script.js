@@ -1,4 +1,15 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Enable header transitions after initial render to prevent FOUC
+    const header = document.querySelector('.header-nav');
+    if (header) {
+        // Wait for next frame to ensure styles are applied
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                header.classList.add('transitions-enabled');
+            });
+        });
+    }
+
     // Page enter animation
     document.body.classList.add('page-entering');
     setTimeout(() => {
@@ -59,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Header scroll effects
-    const header = document.querySelector('.header-nav');
+    // Note: header variable already defined at top of DOMContentLoaded
     let lastScroll = 0;
 
     window.addEventListener('scroll', function() {

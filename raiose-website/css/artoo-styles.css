@@ -108,6 +108,11 @@ body {
     -webkit-backdrop-filter: blur(18px) saturate(120%);
     border-bottom: 1px solid rgba(255, 255, 255, 0.18);
     z-index: 999;
+    transform: translateY(0);
+    /* Transition enabled via .transitions-enabled class to prevent FOUC */
+}
+
+.header-nav.transitions-enabled {
     transition: var(--transition-base);
 }
 
