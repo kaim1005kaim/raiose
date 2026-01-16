@@ -137,15 +137,6 @@ body {
 /* Ensure SVG logo fits header nicely */
 .header-logo img { height: 28px; display: block; filter: invert(1) brightness(1); }
 
-/* Intro Overlay - styles defined in inline CSS for flash prevention */
-#intro-overlay.hidden {
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 600ms ease;
-}
-
-body.intro-active { overflow: hidden; }
-
 .header-menu {
     display: flex;
     gap: var(--spacing-2xl);

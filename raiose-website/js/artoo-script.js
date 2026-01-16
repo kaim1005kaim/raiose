@@ -202,28 +202,6 @@ document.addEventListener('DOMContentLoaded', function() {
         yearSpan.textContent = new Date().getFullYear();
     }
 
-    // Intro overlay animation
-    const introOverlay = document.getElementById('intro-overlay');
-
-    if (introOverlay) {
-        // Prevent scroll during intro
-        document.body.style.overflow = 'hidden';
-
-        // Hide overlay after animation
-        setTimeout(() => {
-            introOverlay.classList.add('hidden');
-            document.body.style.overflow = '';
-
-            // Trigger entrance animations
-            const heroElements = document.querySelectorAll('.hero-index, .hero-visual, .hero-copy');
-            heroElements.forEach((el, index) => {
-                setTimeout(() => {
-                    el.style.animationPlayState = 'running';
-                }, index * 100);
-            });
-        }, 1200);
-    }
-
     // ========================================
     // Scroll Reveal Animations
     // ========================================
