@@ -163,13 +163,6 @@ body {
     height: clamp(60px, 14vw, 220px);
     max-width: 90%;
     filter: invert(1) brightness(1);
-    animation: introPop 900ms ease-out both;
-}
-
-@keyframes introPop {
-    0% { opacity: 0; transform: translateY(12px) scale(0.94); filter: blur(2px) invert(1) brightness(1); }
-    60% { opacity: 1; transform: translateY(0) scale(1.02); filter: blur(0px) invert(1) brightness(1); }
-    100% { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 body.intro-active { overflow: hidden; }
