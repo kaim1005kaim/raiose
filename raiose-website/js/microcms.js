@@ -266,7 +266,7 @@ async function renderWorksCards(containerId, category, limit = 4) {
  * Render all works for service page (loads all categories)
  */
 async function renderAllServiceWorks() {
-    const categories = ['anime', 'video', 'web', '3dprint'];
+    const categories = ['anime', 'video', 'web', 'Product'];
 
     for (const category of categories) {
         const containerId = `works-${category}`;
