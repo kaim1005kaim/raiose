@@ -244,7 +244,7 @@
         renderer.setSize(container.offsetWidth, container.offsetHeight);
         renderer.setPixelRatio(window.devicePixelRatio);
         renderer.toneMapping = THREE.ACESFilmicToneMapping;
-        renderer.toneMappingExposure = 0.4;
+        renderer.toneMappingExposure = 0.2;
         container.appendChild(renderer.domElement);
 
         // Load HDR environment map
@@ -257,7 +257,7 @@
         });
 
         // Lighting
-        const ambientLight = new THREE.AmbientLight(0xffffff, 0.2);
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0);
         scene.add(ambientLight);
 
         const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
