@@ -244,7 +244,7 @@
         renderer.setSize(container.offsetWidth, container.offsetHeight);
         renderer.setPixelRatio(window.devicePixelRatio);
         renderer.toneMapping = THREE.ACESFilmicToneMapping;
-        renderer.toneMappingExposure = 1.0;
+        renderer.toneMappingExposure = 0.6;
         container.appendChild(renderer.domElement);
 
         // Load HDR environment map
@@ -259,17 +259,17 @@
           scene.traverse(function(child) {
             if (child.isMesh && child.material) {
               child.material.envMap = envMap;
-              child.material.envMapIntensity = 2.5;
+              child.material.envMapIntensity = 1.0;
               child.material.needsUpdate = true;
             }
           });
         });
 
-        // Lighting (similar to glTF Viewer settings)
-        const ambientLight = new THREE.AmbientLight(0xffffff, 0.3);
+        // Lighting
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.2);
         scene.add(ambientLight);
 
-        const directionalLight = new THREE.DirectionalLight(0xffffff, 2.5);
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 1.0);
         directionalLight.position.set(5, 5, 5);
         scene.add(directionalLight);
 
@@ -306,7 +306,7 @@
               if (child.isMesh && child.material) {
                 if (envMap) {
                   child.material.envMap = envMap;
-                  child.material.envMapIntensity = 2.5;
+                  child.material.envMapIntensity = 1.0;
                 }
                 child.material.needsUpdate = true;
               }
