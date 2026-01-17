@@ -244,7 +244,7 @@
         renderer.setSize(container.offsetWidth, container.offsetHeight);
         renderer.setPixelRatio(window.devicePixelRatio);
         renderer.toneMapping = THREE.ACESFilmicToneMapping;
-        renderer.toneMappingExposure = 0.3;
+        renderer.toneMappingExposure = 0.8;
         container.appendChild(renderer.domElement);
 
         // Load HDR environment map
@@ -254,22 +254,13 @@
           texture.mapping = THREE.EquirectangularReflectionMapping;
           envMap = texture;
           scene.environment = envMap;
-
-          // Update existing materials to use environment map
-          scene.traverse(function(child) {
-            if (child.isMesh && child.material) {
-              child.material.envMap = envMap;
-              child.material.envMapIntensity = 0.5;
-              child.material.needsUpdate = true;
-            }
-          });
         });
 
         // Lighting
-        const ambientLight = new THREE.AmbientLight(0xffffff, 0.1);
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
         scene.add(ambientLight);
 
-        const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 1.0);
         directionalLight.position.set(5, 5, 5);
         scene.add(directionalLight);
 
@@ -301,13 +292,10 @@
             // Center the model
             model.position.sub(center.multiplyScalar(scale));
 
-            // Apply environment map to model materials
+            // Keep original material colors, only add subtle reflections
             model.traverse(function(child) {
               if (child.isMesh && child.material) {
-                if (envMap) {
-                  child.material.envMap = envMap;
-                  child.material.envMapIntensity = 0.5;
-                }
+                // Preserve original material properties
                 child.material.needsUpdate = true;
               }
             });
