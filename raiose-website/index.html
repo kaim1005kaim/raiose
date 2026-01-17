@@ -217,7 +217,7 @@
       import * as THREE from 'three';
       import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
       import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-      import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
+      import { EXRLoader } from 'three/addons/loaders/EXRLoader.js';
 
       document.addEventListener('DOMContentLoaded', function(){
         const container = document.getElementById('hero-3d');
@@ -247,10 +247,10 @@
         renderer.toneMappingExposure = 0;
         container.appendChild(renderer.domElement);
 
-        // Load HDR environment map
+        // Load EXR environment map
         let envMap = null;
-        const rgbeLoader = new RGBELoader();
-        rgbeLoader.load('images/environment.hdr', function(texture) {
+        const exrLoader = new EXRLoader();
+        exrLoader.load('images/environment.exr', function(texture) {
           texture.mapping = THREE.EquirectangularReflectionMapping;
           envMap = texture;
           scene.environment = envMap;
