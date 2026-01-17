@@ -217,6 +217,7 @@
       import * as THREE from 'three';
       import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
       import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+      import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
 
       document.addEventListener('DOMContentLoaded', function(){
         const container = document.getElementById('hero-3d');
@@ -242,17 +243,15 @@
         });
         renderer.setSize(container.offsetWidth, container.offsetHeight);
         renderer.setPixelRatio(window.devicePixelRatio);
-        renderer.toneMapping = THREE.ACESFilmicToneMapping;
-        renderer.toneMappingExposure = 1.0;
+        renderer.toneMapping = THREE.LinearToneMapping;
+        renderer.toneMappingExposure = 0;
         container.appendChild(renderer.domElement);
 
-        // Load environment map from galaxy image
-        const textureLoader = new THREE.TextureLoader();
+        // Load HDR environment map
         let envMap = null;
-
-        textureLoader.load('images/photorealistic-galaxy-background.jpg', function(texture) {
+        const rgbeLoader = new RGBELoader();
+        rgbeLoader.load('images/environment.hdr', function(texture) {
           texture.mapping = THREE.EquirectangularReflectionMapping;
-          texture.colorSpace = THREE.SRGBColorSpace;
           envMap = texture;
           scene.environment = envMap;
 
@@ -260,17 +259,17 @@
           scene.traverse(function(child) {
             if (child.isMesh && child.material) {
               child.material.envMap = envMap;
-              child.material.envMapIntensity = 1.5;
+              child.material.envMapIntensity = 2.5;
               child.material.needsUpdate = true;
             }
           });
         });
 
-        // Lighting (reduced since we have environment map)
+        // Lighting (similar to glTF Viewer settings)
         const ambientLight = new THREE.AmbientLight(0xffffff, 0.3);
         scene.add(ambientLight);
 
-        const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 2.5);
         directionalLight.position.set(5, 5, 5);
         scene.add(directionalLight);
 
@@ -307,7 +306,7 @@
               if (child.isMesh && child.material) {
                 if (envMap) {
                   child.material.envMap = envMap;
-                  child.material.envMapIntensity = 1.5;
+                  child.material.envMapIntensity = 2.5;
                 }
                 child.material.needsUpdate = true;
               }
