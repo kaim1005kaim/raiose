@@ -242,13 +242,35 @@
         });
         renderer.setSize(container.offsetWidth, container.offsetHeight);
         renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.toneMapping = THREE.ACESFilmicToneMapping;
+        renderer.toneMappingExposure = 1.0;
         container.appendChild(renderer.domElement);
 
-        // Lighting
-        const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+        // Load environment map from galaxy image
+        const textureLoader = new THREE.TextureLoader();
+        let envMap = null;
+
+        textureLoader.load('images/photorealistic-galaxy-background.jpg', function(texture) {
+          texture.mapping = THREE.EquirectangularReflectionMapping;
+          texture.colorSpace = THREE.SRGBColorSpace;
+          envMap = texture;
+          scene.environment = envMap;
+
+          // Update existing materials to use environment map
+          scene.traverse(function(child) {
+            if (child.isMesh && child.material) {
+              child.material.envMap = envMap;
+              child.material.envMapIntensity = 1.5;
+              child.material.needsUpdate = true;
+            }
+          });
+        });
+
+        // Lighting (reduced since we have environment map)
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.3);
         scene.add(ambientLight);
 
-        const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
         directionalLight.position.set(5, 5, 5);
         scene.add(directionalLight);
 
@@ -279,6 +301,17 @@
 
             // Center the model
             model.position.sub(center.multiplyScalar(scale));
+
+            // Apply environment map to model materials
+            model.traverse(function(child) {
+              if (child.isMesh && child.material) {
+                if (envMap) {
+                  child.material.envMap = envMap;
+                  child.material.envMapIntensity = 1.5;
+                }
+                child.material.needsUpdate = true;
+              }
+            });
 
             scene.add(model);
           },
