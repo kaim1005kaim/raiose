@@ -61,6 +61,69 @@ async function fetchNewsDetail(id) {
 }
 
 /**
+ * Fetch works/portfolio list from microCMS
+ * @param {Object} options - Query options
+ * @param {number} options.limit - Number of items to fetch
+ * @param {number} options.offset - Offset for pagination
+ * @param {string} options.category - Filter by category (anime, video, web, 3dprint)
+ * @returns {Promise<Object>} - Works data
+ */
+async function fetchWorksList(options = {}) {
+    const { limit = 10, offset = 0, category = '' } = options;
+
+    const params = new URLSearchParams({
+        limit: limit.toString(),
+        offset: offset.toString(),
+    });
+
+    // Add category filter if specified
+    if (category) {
+        params.append('filters', `category[equals]${category}`);
+    }
+
+    try {
+        const response = await fetch(`${MICROCMS_BASE_URL}/works?${params}`, {
+            headers: {
+                'X-MICROCMS-API-KEY': MICROCMS_API_KEY,
+            },
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        return await response.json();
+    } catch (error) {
+        console.error('Error fetching works:', error);
+        return { contents: [], totalCount: 0 };
+    }
+}
+
+/**
+ * Fetch single work detail by ID
+ * @param {string} id - Content ID
+ * @returns {Promise<Object|null>} - Work data
+ */
+async function fetchWorkDetail(id) {
+    try {
+        const response = await fetch(`${MICROCMS_BASE_URL}/works/${id}`, {
+            headers: {
+                'X-MICROCMS-API-KEY': MICROCMS_API_KEY,
+            },
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        return await response.json();
+    } catch (error) {
+        console.error('Error fetching work detail:', error);
+        return null;
+    }
+}
+
+/**
  * Format date for display
  * @param {string} dateString - ISO date string
  * @returns {string} - Formatted date (YYYY.MM.DD)
@@ -167,11 +230,75 @@ async function renderNewsDetail() {
     }
 }
 
+/**
+ * Render works cards for a specific service category
+ * @param {string} containerId - Container element ID (e.g., 'works-anime')
+ * @param {string} category - Category to filter (anime, video, web, 3dprint)
+ * @param {number} limit - Number of works to show
+ */
+async function renderWorksCards(containerId, category, limit = 4) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    // Show loading state
+    container.innerHTML = '<div class="works-loading">読み込み中...</div>';
+
+    const data = await fetchWorksList({ limit, category });
+
+    if (data.contents.length === 0) {
+        container.innerHTML = '<p class="no-works">実績はまだありません</p>';
+        return;
+    }
+
+    container.innerHTML = data.contents.map(work => `
+        <div class="work-card" ${work.id ? `data-work-id="${work.id}"` : ''}>
+            <div class="work-thumb" style="background-image:url('${work.thumbnail?.url || '../images/placeholder.png'}');"></div>
+            <h4 class="work-title">${work.title}</h4>
+            <p class="work-meta">${work.meta || ''}</p>
+        </div>
+    `).join('');
+
+    // Trigger scroll reveal animations
+    container.classList.add('revealed');
+}
+
+/**
+ * Render all works for service page (loads all categories)
+ */
+async function renderAllServiceWorks() {
+    const categories = ['anime', 'video', 'web', '3dprint'];
+
+    for (const category of categories) {
+        const containerId = `works-${category}`;
+        await renderWorksCards(containerId, category, 4);
+    }
+}
+
+/**
+ * Render work detail modal or page
+ * @param {string} workId - Work ID to display
+ */
+async function renderWorkDetail(workId) {
+    const work = await fetchWorkDetail(workId);
+
+    if (!work) {
+        console.error('Work not found');
+        return null;
+    }
+
+    return work;
+}
+
 // Export functions for use in other files
 window.microCMS = {
     fetchNewsList,
     fetchNewsDetail,
+    fetchWorksList,
+    fetchWorkDetail,
     formatDate,
     renderNewsCards,
     renderNewsDetail,
+    renderWorksCards,
+    renderAllServiceWorks,
+    renderWorkDetail,
 };

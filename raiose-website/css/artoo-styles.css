@@ -2137,6 +2137,37 @@ body {
     border-color: var(--accent-orange);
 }
 
+/* Works loading and empty states */
+.works-loading,
+.no-works {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: var(--spacing-2xl);
+    color: var(--ink-1);
+    font-size: 14px;
+}
+
+.works-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+}
+
+.works-loading::before {
+    content: '';
+    width: 16px;
+    height: 16px;
+    border: 2px solid var(--line-0);
+    border-top-color: var(--accent-orange);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
 /* Service tile hover */
 .service-tile:hover {
     border-color: var(--accent-orange);
