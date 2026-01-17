@@ -260,7 +260,7 @@
         const ambientLight = new THREE.AmbientLight(0xffffff, 0);
         scene.add(ambientLight);
 
-        const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 0);
         directionalLight.position.set(5, 5, 5);
         scene.add(directionalLight);
 
@@ -292,10 +292,11 @@
             // Center the model
             model.position.sub(center.multiplyScalar(scale));
 
-            // Keep original material colors, only add subtle reflections
+            // Keep original material colors, reduce environment reflection intensity
             model.traverse(function(child) {
               if (child.isMesh && child.material) {
-                // Preserve original material properties
+                // Reduce envMap intensity to preserve original colors
+                child.material.envMapIntensity = 0.3;
                 child.material.needsUpdate = true;
               }
             });
