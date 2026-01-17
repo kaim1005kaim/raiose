@@ -76,9 +76,9 @@ async function fetchWorksList(options = {}) {
         offset: offset.toString(),
     });
 
-    // Add category filter if specified
+    // Add category filter if specified (category is array type, use contains)
     if (category) {
-        params.append('filters', `category[equals]${category}`);
+        params.append('filters', `category[contains]${category}`);
     }
 
     try {
