@@ -1688,6 +1688,10 @@ body {
         min-height: auto;
     }
 
+    .home .hero-copy {
+        margin-top: 20vh;
+    }
+
     .hero-container,
     .home .hero-container {
         grid-template-columns: 1fr;
