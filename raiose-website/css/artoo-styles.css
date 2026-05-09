@@ -1858,13 +1858,6 @@ body {
         overflow: hidden;
     }
 
-    /* Hide decorative visual effects on mobile */
-    .visual-lines,
-    .orbit-ring,
-    .grid-pattern,
-    .corner-marks {
-        display: none;
-    }
 
     #hero-3d {
         width: 100%;
