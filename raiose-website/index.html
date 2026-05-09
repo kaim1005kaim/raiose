@@ -41,16 +41,13 @@
             top:0 !important;
             bottom:0 !important;
             width:80px !important;
-            z-index:1000 !important;
-            display:flex !important;
-            flex-direction:column !important;
-            align-items:center !important;
-            justify-content:flex-end !important;
-            padding:24px 0 40px !important;
+            z-index:998 !important;
         }
         .hero{
-            min-height:100vh !important;
             padding-top:72px !important;
+        }
+        @media(max-width:768px){
+            .left-rail{display:none !important}
         }
     </style>
     <link rel="stylesheet" href="css/artoo-styles.css">
@@ -159,35 +156,18 @@
         </div>
     </section>
 
-    <!-- Partners Section -->
+    <!-- Partners Section (hidden until partner logos are added to images/partners/) -->
+    <!--
     <section class="partners-section">
         <div class="container">
             <span class="section-number">Partners</span>
             <h2 class="section-title">パートナー・クライアント</h2>
             <p class="section-subtitle">私たちと共に価値を創造してきたパートナーの皆様</p>
-
             <div class="partners-grid scroll-reveal-stagger">
-                <div class="partner-item">
-                    <img src="images/partners/partner-1.svg" alt="Partner 1" onerror="this.style.display='none'">
-                </div>
-                <div class="partner-item">
-                    <img src="images/partners/partner-2.svg" alt="Partner 2" onerror="this.style.display='none'">
-                </div>
-                <div class="partner-item">
-                    <img src="images/partners/partner-3.svg" alt="Partner 3" onerror="this.style.display='none'">
-                </div>
-                <div class="partner-item">
-                    <img src="images/partners/partner-4.svg" alt="Partner 4" onerror="this.style.display='none'">
-                </div>
-                <div class="partner-item">
-                    <img src="images/partners/partner-5.svg" alt="Partner 5" onerror="this.style.display='none'">
-                </div>
-                <div class="partner-item">
-                    <img src="images/partners/partner-6.svg" alt="Partner 6" onerror="this.style.display='none'">
-                </div>
             </div>
         </div>
     </section>
+    -->
 
     <!-- Footer -->
     <footer class="footer">
@@ -242,7 +222,7 @@
           antialias: true
         });
         renderer.setSize(container.offsetWidth, container.offsetHeight);
-        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
         renderer.toneMapping = THREE.ACESFilmicToneMapping;
         renderer.toneMappingExposure = 0.07;
         container.appendChild(renderer.domElement);
@@ -304,7 +284,7 @@
             scene.add(model);
           },
           function (xhr) {
-            console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+            if (xhr.total > 0) console.log(Math.round(xhr.loaded / xhr.total * 100) + '% loaded');
           },
           function (error) {
             console.error('Error loading GLB model:', error);

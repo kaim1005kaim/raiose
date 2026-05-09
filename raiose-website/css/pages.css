@@ -56,7 +56,7 @@
 
 .info-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr));
     gap: 40px;
     margin-bottom: 60px;
 }
@@ -850,6 +850,16 @@
 }
 
 @media (max-width: 768px) {
+    .page-hero,
+    .company-info,
+    .contact-section {
+        margin-left: 0;
+    }
+
+    .page-hero {
+        padding: 100px 20px 40px;
+    }
+
     .info-grid {
         grid-template-columns: 1fr;
     }
