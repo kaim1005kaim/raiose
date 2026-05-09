@@ -751,14 +751,17 @@ body {
         line-height: 22px;
     }
     .home .hero-copy {
+        grid-area: auto;
         margin-left: 0;
         text-align: center;
         max-width: 100%;
     }
     .home .hero-index {
+        grid-area: auto;
         display: none;
     }
     .home .hero-visual {
+        grid-area: auto;
         height: 280px;
     }
     .home #hero-3d {
@@ -1695,6 +1698,7 @@ body {
     }
 
     .hero-index {
+        grid-area: auto;
         order: 3;
         display: flex;
         flex-wrap: wrap;
@@ -1715,6 +1719,7 @@ body {
     }
 
     .hero-visual {
+        grid-area: auto;
         order: 2;
     }
 
@@ -1736,6 +1741,7 @@ body {
     }
 
     .hero-copy {
+        grid-area: auto;
         order: 1;
         text-align: center;
         transform: none;
