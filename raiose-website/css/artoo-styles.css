@@ -1685,7 +1685,8 @@ body {
         min-height: auto;
     }
 
-    .hero-container {
+    .hero-container,
+    .home .hero-container {
         grid-template-columns: 1fr;
         grid-template-areas: none;
         gap: 24px;
