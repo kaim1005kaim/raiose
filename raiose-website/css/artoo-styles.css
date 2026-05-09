@@ -1715,11 +1715,12 @@ body {
     }
 
     .hero-visual {
-        order: 1;
+        order: 2;
     }
 
     .home .hero-visual {
         transform: none;
+        justify-self: center;
     }
 
     .service-chips {
@@ -1735,7 +1736,7 @@ body {
     }
 
     .hero-copy {
-        order: 2;
+        order: 1;
         text-align: center;
         transform: none;
     }
@@ -2097,7 +2098,12 @@ body {
 
 @media (max-width: 768px) {
     .home .hero { min-height: auto; padding-top: 80px; padding-bottom: 32px; }
-    .home .visual-container { height: 360px; }
+    .home .visual-container {
+        width: 60vw;
+        max-width: 280px;
+        height: auto;
+        aspect-ratio: 1 / 1;
+    }
 }
 
 /* ========================================
